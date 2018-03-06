@@ -1,0 +1,52 @@
+<h3 class="page_header">Employee Register</h3>
+<div class="emp_reg_wrap">
+
+	<form id="frm_reg_save" (submit)="save_emp()" >	
+		
+		<div class="row">
+			<div class="col-md-4"></div>
+			<div class="col-md-4">
+					
+				<div class="row">
+					<div class="col-md-12">
+						<input type="text" id="emp_name" name="emp_name" placeholder="Emp Name" class="form-control" [(ngModel)]="emp_name" >
+					</div>
+				</div>
+				<br>
+				<div class="row">
+					<div class="col-md-12">
+						<input type="text" id="proffession" name="proffession" placeholder="Proffession" class="form-control" [(ngModel)]="proffession" >
+					</div>
+				</div>
+				<br>
+				<div class="row">
+					<div class="col-md-12">
+						<textarea name="address" id="address" placeholder="Address" class="form-control" [(ngModel)]="address" ></textarea>
+					</div>
+				</div>
+				<br>
+				<div class="row">
+					<div class="col-md-12">
+						<input type="text" id="username" name="username" placeholder="Username" class="form-control" [(ngModel)]="username" >
+					</div>
+				</div>
+				<br>
+				<div class="row">
+					<div class="col-md-12">
+						<input type="password" id="password" name="password" placeholder="Password" class="form-control" [(ngModel)]="password" >
+					</div>
+				</div>
+				<br>
+				<div class="row">
+					<div class="col-md-12 text-center">
+						<button class="btn btn-success">Save</button>
+					</div>
+				</div>
+
+			</div>
+		</div>
+
+	
+	</form>
+
+</div>

@@ -1,0 +1,50 @@
+<div [ngClass]="['ap_header']">
+  <div class="logo_wrap">
+    <a class="navbar-brand" [routerLink]="['/']"><div [innerHTML]="appName"></div></a>
+  </div>
+  <div class="sidebar_toggle_btn" (click)="toggle_sidebar()">
+      <i class="fa fa-bars" aria-hidden="true"></i>
+  </div>
+  <div class="logout_btn" (click)="logout()">
+      <i class="fa fa-sign-out" aria-hidden="true"></i>      
+  </div>
+</div>
+
+
+<div [ngClass]="['app_sidebar', inactive_class]">
+    <div class="sidebar_content">
+      <div class="user_profile_panel" *ngIf="authState">
+          <div class="f-left image"><img src="app/img/profile.png" alt="User Image" class="img-circle"></div>
+          <div class="f-left info">
+              <p>{{userInfo.appEmpName}}</p>
+              <p class="designation">{{userInfo.appProffession}} <i class="icofont icofont-caret-down m-l-5"></i></p>
+          </div>
+      </div>
+      <ul class="navbar-nav mr-auto">  
+        <li class="heading_li">Navigation</li>    
+        <li class="nav-item" [class.active]="'/RegisterComponent' == cur_Url">          
+          <a class="nav-link" [routerLink]="['/RegisterComponent']"><i class="fa fa-angle-right" aria-hidden="true"></i>&nbsp;&nbsp;Register</a>
+        </li>            
+        <li class="nav-item" [class.active]="'/LoginComponent' == cur_Url">          
+          <a class="nav-link" [routerLink]="['/LoginComponent']"><i class="fa fa-angle-right" aria-hidden="true"></i>&nbsp;&nbsp;Login</a>
+        </li> 
+        <div *ngIf="authState">
+          <li class="nav-item" [class.active]="'/' == cur_Url">            
+            <a class="nav-link" [routerLink]="['/']"><i class="fa fa-angle-right" aria-hidden="true"></i>&nbsp;&nbsp;Dashboard <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item" [class.active]="'/ListComponent' == cur_Url">            
+            <a class="nav-link" [routerLink]="['/ListComponent']"><i class="fa fa-angle-right" aria-hidden="true"></i>&nbsp;&nbsp;Employees</a>
+          </li>      
+          <li class="nav-item" [class.active]="'/dynForm' == cur_Url">           
+            <a class="nav-link" [routerLink]="['/dynForm']"><i class="fa fa-angle-right" aria-hidden="true"></i>&nbsp;&nbsp;Students</a>
+          </li>      
+          <li class="nav-item" [class.active]="'/charts' == cur_Url">            
+            <a class="nav-link" [routerLink]="['/charts']"><i class="fa fa-angle-right" aria-hidden="true"></i>&nbsp;&nbsp;Charts</a>
+          </li>      
+          <li class="nav-item">            
+            <a class="nav-link" href="javascript:void(0)" (click)="logout()"><i class="fa fa-angle-right" aria-hidden="true"></i>&nbsp;&nbsp;Logout</a>
+          </li>      
+        </div>
+      </ul>    
+    </div>
+</div>

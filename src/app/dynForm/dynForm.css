@@ -1,0 +1,153 @@
+.sliding_panel{
+    position: fixed;
+    height: 100%;
+    width: 400px;
+    background: #fff;
+    border: 0;
+    border-right:0;    
+    top: 0;
+    z-index: 100;
+    transition: 0.4s;        
+    overflow-x: auto;
+}
+.sliding_panel h3{
+    text-align: center;
+    padding: 13px;
+    background: #f1f1f1;
+    background: #fd8787;
+    color: #fff;
+}
+
+.sliding_panel .del_btn{
+    position: absolute;
+    border-radius: 50%;
+    font-size: 11px;
+    right: -18px;
+    top: 6px;
+    padding: 3px 7px;
+    background: #EF4646;
+    color: #fff;
+    cursor: pointer;
+}
+
+.sliding_panel_content{
+    padding: 10px 27px;
+    padding-top:0;
+}
+.sliding_panel_content .row:not(:last-child){
+    margin-bottom: 13px;
+}
+.sliding_panel.off{
+    right: -400px;
+    transition: 0.4s;
+}
+.sliding_panel.on{
+    right: 0px;
+    transition: 0.4s;
+}
+.sliding_panel_overlay.on{
+    position: fixed;
+    z-index: 50;
+    background: rgba(0, 0, 0, 0.5);
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+}
+
+.sliding_panel .toggle_btn{
+    position: absolute;
+    top: 60px;
+    left: -40px;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-right: 0;
+    width: 40px;
+    font-size: 22px;
+    text-align: center;
+    cursor: pointer;
+    color: #5f5555;
+    box-shadow: -5px 1px 10px #bdbdbd;
+    border-radius: 5px 0 0 5px;
+}
+
+.student_info_box{
+    border-radius: 0 !important;
+    border-color: #efefef;
+    box-shadow: 1px 1px 1px 1px rgba(221, 221, 221, 0.2);
+}
+
+.compo_head{
+    color: #a9a9a9;
+}
+
+.student_info_box .card-body {
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+    padding: 12px 20px;
+}
+
+.student_info_box .card-title{
+    font-size: 21px;
+    color: #424242;
+}
+.student_info_box p{
+    margin:0;
+    color: #463939;
+    margin-bottom: 5px;
+    font-size: 14px;
+}
+.student_info_box .address{
+    font-size: 12px;
+}
+.student_info_box .controls{
+    cursor: pointer;
+    color: #19888A;
+}
+.student_info_box .skills span{
+    color: #ea4848;
+}
+
+.cus_modal.off, .cus_modal_overlay.off{
+    display: none;
+}
+.cus_modal.on{
+    position: fixed;
+    width: 700px;
+    background: #fff;
+    min-height: 300px;
+    z-index: 27;
+    top: 70px;
+    left: calc(50% - 350px);
+    border-radius: 4px;
+}
+.cus_modal:after{
+    content: "";
+}
+.cus_modal.on .cus_modal_content{
+
+}
+.cus_modal_overlay.on{
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.48);
+    z-index: 10;
+    top: 0;
+    left: 0;
+    transition: 0.4s;
+}
+.cus_modal .close_btn{
+    position: absolute;
+    top: 10px;
+    right: 13px;
+    background: no-repeat;
+    border: none;
+    color: #9c9393;
+    cursor: pointer;
+}
+.cus_modal p{
+    background: #ddd;
+    margin: 10px;
+    padding: 7px 20px;
+}

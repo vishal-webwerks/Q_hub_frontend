@@ -1,0 +1,26 @@
+.stat_wrap{
+	background: #fff;
+	width: 100%;
+	float: left;
+	padding: 10px 20px;	
+	margin-bottom: 20px;
+	box-shadow: 1px 1px 1px 1px #ddd; 
+}
+.stat_wrap h5{
+	color: #2783bd;
+	font-size: 25px;
+}
+
+.stat_wrap i{
+	margin-right: 28px;
+    color: #fff;
+    border-radius: 50%;
+    height: 38px;
+    width: 38px;
+    text-align: center;
+    line-height: 36px;
+    margin-top: 9px;
+}
+.stat_wrap.red i{ background: #ff6b6b; }
+.stat_wrap.blue i{ background: #43CDFF; }
+.stat_wrap.green i{ background: #2EFE9A; }

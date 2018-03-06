@@ -1,0 +1,77 @@
+<h3 class="page_header">Employees</h3>
+<br>
+<div [hidden]="!thumb_display">
+
+	<div class="row">
+		<div class="col-md-4" *ngFor="let employee of employees; let i = index ">
+			<div class="emp_list_wrap">			
+				<div class="info_item emp_name">
+					<i class="fa fa-user-circle"></i>&nbsp;&nbsp;{{ employee.emp_name }}
+					&nbsp;&nbsp;
+					<i (click)="getEmpInfo(employee._id)" class="fa fa-pencil" style="cursor:pointer"></i>		
+				</div>
+				<div class="info_item emp_profession">
+					<i class="fa fa-address-book-o"></i>&nbsp;&nbsp;{{ employee.proffession }}		
+				</div>
+				<div class="info_item emp_add">
+					<i class="fa fa-address-card-o"></i>&nbsp;&nbsp;{{ employee.address }}
+				</div>
+				<div class="info_item emp_add">
+					<i class="fa fa-address-card-o"></i>&nbsp;&nbsp;{{ employee.username }}
+				</div>
+			</div>
+		</div>
+	</div>
+
+</div>
+
+
+<form id="frm_reg_save" (submit)="update_emp()" >
+
+	<!-- Modal -->
+	<div class="modal fade" id="update_modal" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	  <div class="modal-dialog" role="document">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <h5 class="modal-title" id="exampleModalLabel">Update</h5>
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="hide_modal()">
+	          <span aria-hidden="true">&times;</span>
+	        </button>
+	      </div>
+	      <div class="modal-body">	      	
+	        
+			<div class="row">
+				<div class="col-md-12">
+					<input type="text" id="emp_name" name="emp_name" placeholder="Emp Name" class="form-control" [(ngModel)]="emp_name" >
+				</div>
+			</div>
+				<br>
+			<div class="row">
+				<div class="col-md-12">
+					<input type="text" id="proffession" name="proffession" placeholder="Proffession" class="form-control" [(ngModel)]="proffession" >
+				</div>
+			</div>
+			<br>
+			<div class="row">
+				<div class="col-md-12">
+					<textarea name="address" id="address" placeholder="Address" class="form-control" [(ngModel)]="address" ></textarea>
+				</div>
+			</div>
+			<br>
+			<div class="row">
+				<div class="col-md-12">
+					<input type="text" id="username" name="username" placeholder="Proffession" class="form-control" [(ngModel)]="username" >
+				</div>
+			</div>
+			<br>		
+
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="hide_modal()">Close</button>
+	        <button class="btn btn-primary">Update changes</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+
+</form>

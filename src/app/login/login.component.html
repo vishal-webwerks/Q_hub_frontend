@@ -1,0 +1,42 @@
+<form (submit)="login()">
+
+	<br><br>
+	<div class="row">
+		<div class="col-md-4"></div>
+		<div class="col-md-4">
+			
+			<div class="login_wrap">
+				
+				<h4 class="text-center">Sign In</h4>				
+				<br>
+				<div class="row">
+					<div class="col-md-12">
+						<input type="text" id="username" name="username" placeholder="Username" class="form-control" [(ngModel)]="username">
+					</div>
+				</div>
+				<br>
+				<div class="row">
+					<div class="col-md-12">
+						<input type="password" id="password" name="password" placeholder="Password" class="form-control" [(ngModel)]="password">
+					</div>
+				</div>
+				<br>
+				<div class="row text-center">
+					<div class="col-md-12">
+						<button class="btn btn-success btn-block">Login</button>						
+					</div>
+				</div>
+				<br>
+				<div class="row text-center">
+					<div class="col">
+						<button class="btn btn-danger btn-block" (click)="signIn('google')" type="button"><i class="fa fa-google-plus" aria-hidden="true"></i>&nbsp;&nbsp;Login with Google+</button>
+					</div>
+				</div>				
+
+
+			</div>
+
+		</div>
+	</div>
+
+</form>

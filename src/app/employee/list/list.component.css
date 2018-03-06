@@ -1,0 +1,30 @@
+.emp_list_wrap{
+    width: 100%;
+    float: left;
+    background: #fff;
+    margin-bottom: 20px;
+    border: 1px solid #eaeaea;
+    padding: 10px 20px;
+    border-bottom: 2px solid #EC8282;
+}
+.emp_list_wrap .info_item{
+	color: #4e4e4e;
+}
+.emp_list_wrap .info_item i{
+	color: #333;
+	font-size: 12px;
+}
+.emp_list_wrap .info_item.emp_name{
+	font-size: 14px;
+	color: #333;
+}
+.emp_list_wrap .info_item.emp_profession{
+	font-size: 14px;
+}
+.emp_list_wrap .info_item.emp_add{
+	font-size: 14px;
+}
+
+.emp_list_wrap .fa-pencil{
+    color: #42CAD1;
+}

@@ -1,0 +1,162 @@
+<div [ngClass]="['cus_modal', toggle_modal_cl]">
+        <div class="cus_modal_content">
+            <button type="button" class="close_btn" (click)="toggle_modal()"><i class="fa fa-times" aria-hidden="true"></i></button>
+    
+            <p>
+                <strong>Name :</strong>{{ studData.name }}
+            </p>
+            <p>
+                <strong>Birth Date :</strong>{{ studData.birth_date }}
+            </p>
+            <p>
+                <strong>Email ID :</strong>{{ studData.email_id }}
+            </p>
+            <p>
+                <strong>Address :</strong>{{ studData.address }}
+            </p>
+            <div class="row">
+                <div class="col-md-12" style="padding-left:44px;">
+                        <strong>Skills</strong>           
+                        <ul>
+                            <li *ngFor="let entry of studData.skills;" style="margin-bottom:10px">
+                                <h6 style="margin-bottom:0">{{ entry.value.skill }}</h6>
+                                <span>{{ entry.value.desc }}</span>
+                            </li>
+                        </ul>
+                </div>
+            </div>
+    
+        </div>
+    </div>
+    <div [ngClass]="['cus_modal_overlay', toggle_modal_cl]"></div>  
+
+    <div [ngClass]="['sliding_panel_overlay', toggle_class]"></div>
+<div [ngClass]="['sliding_panel', toggle_class]">
+    <div ngClass="toggle_btn" (click)="toggle_panel()"><i class="fa fa-cog fa-spin" aria-hidden="true"></i></div>
+    <h3>Student
+            <i style="cursor: pointer;font-size: 16px;font-weight: 500;margin-top: 8px;margin-right: 4px;" (click)="toggle_panel()" class="fa fa-times pull-right" aria-hidden="true"></i>
+    </h3>
+    <br>
+    <div class="sliding_panel_content">
+        <form [formGroup]="dynFrm" (ngSubmit)="onSubmit(dynFrm.value)">
+
+            <div class="row justify-content-center">
+                <div class="col-md-12">
+                    <input type="text" id="name" name="name" placeholder="Name" formControlName="name" class="form-control">
+                    <div *ngIf="dynFrm.get('name').invalid && (dynFrm.get('name').dirty || dynFrm.get('name').touched)">
+                        <div *ngIf="dynFrm.get('name').errors.required" class="error_msg">Name is required</div>
+                        <div *ngIf="dynFrm.get('name').errors.minlength" class="error_msg">Min length is 4 characters</div>
+                    </div>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-md-12">
+                    <input type="text" id="email_id" name="email_id" placeholder="Email" formControlName="email_id" class="form-control">
+                    <div *ngIf="dynFrm.get('email_id').invalid && (dynFrm.get('email_id').dirty || dynFrm.get('email_id').touched)">
+                        <div *ngIf="dynFrm.get('email_id').errors.required" class="error_msg">Email Id is required</div>
+                    </div>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-md-12">
+                    <input type="text" id="highest_education" name="highest_education" placeholder="Highest Education" formControlName="highest_education" class="form-control" [source]="educations_list" auto-complete>
+                    <div *ngIf="dynFrm.get('highest_education').invalid && (dynFrm.get('highest_education').dirty || dynFrm.get('highest_education').touched)">
+                        <div *ngIf="dynFrm.get('highest_education').errors.required" class="error_msg">Highest Education is required</div>
+                    </div>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-md-12">
+                    <my-date-picker name="birth_date" [options]="myDatePickerOptions" formControlName="birth_date" placeholder="Birth Date"></my-date-picker>
+                    <div *ngIf="dynFrm.get('birth_date').invalid && (dynFrm.get('birth_date').dirty || dynFrm.get('birth_date').touched)">
+                        <div *ngIf="dynFrm.get('birth_date').errors.required" class="error_msg">Birth Date is required</div>
+                    </div>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-md-12">
+                    <textarea name="address" id="address" placeholder="Address" formControlName="address" class="form-control"></textarea>
+                    <div *ngIf="dynFrm.get('address').invalid && (dynFrm.get('address').dirty || dynFrm.get('address').touched)">
+                        <div *ngIf="dynFrm.get('address').errors.required" class="error_msg">Address is required</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-body" *ngFor="let entry of dynFrm.get('skills').controls; let i = index" style="margin-bottom:5px">
+                    <div class="row" [formGroup]="entry" style="position:relative">
+                        <div class="col">
+                            <input type="text" class="form-control" name="skill" placeholder="Skill" formControlName="skill">
+                            <div *ngIf="entry.get('skill').invalid && (entry.get('skill').dirty || entry.get('skill').touched)">
+                                <div *ngIf="entry.get('skill').errors.required" class="error_msg">Skill is required</div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <input type="text" class="form-control" name="desc" placeholder="Description" formControlName="desc">
+                            <div *ngIf="entry.get('desc').invalid && (entry.get('desc').dirty || entry.get('desc').touched)">
+                                <div *ngIf="entry.get('desc').errors.required" class="error_msg">Description is required</div>
+                            </div>
+                        </div>
+                        <span (click)="deleteSkill(i)" class="del_btn"><i class="fa fa-times" aria-hidden="true"></i></span>
+                    </div>  
+                </div>             
+            </div>
+            <br>            
+            <div class="row">
+                <div class="col">
+                    <button type="button" class="btn btn-sm btn-info" (click)="addSkill()">Add Skill</button>
+                </div>
+            </div>
+
+
+            <div class="row text-center">
+                <div class="col-md-12">
+                    <button class="btn btn-success" [disabled]="dynFrm.invalid">Submit</button>
+                </div>
+            </div>
+            
+        </form>
+    </div>
+
+</div>
+
+
+<h3 class="page_header">Students Home</h3>
+<div class="row text-right" style="margin-bottom:10px">
+    <div class="col-md-12">
+        <button class="btn btn-info btn-sm pull-right" type="button" (click)="newStudForm()">New Student</button>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-4" *ngFor="let entry of studsData; let i=index">
+            <div class="card student_info_box">
+                <div class="card-body">
+                    <h4 class="card-title">{{ entry.name }}</h4>
+                    <p class="card-text">
+                        <i class="fa fa-calendar-o" aria-hidden="true"></i>&nbsp;&nbsp;
+                        {{ entry.birth_date }}33-33-2343
+                    </p>
+                    <p class="card-text">
+                        <i class="fa fa-envelope-o" aria-hidden="true"></i>&nbsp;&nbsp;
+                        {{ entry.email_id }}
+                    </p>
+                    <p class="skills">
+                        <i class="fa fa-trophy" aria-hidden="true"></i>&nbsp;&nbsp;                    
+                        <span *ngFor="let entry1 of entry.skills; let j=index">
+                            <span *ngIf="j!=0">,&nbsp;</span>{{ entry1.skill }}
+                        </span>
+                    </p>
+                    <p class="card-text address">
+                            <i class="fa fa-address-card-o" aria-hidden="true"></i>&nbsp;&nbsp;                    
+                        {{ entry.address | truncate }}
+                    </p>
+                    <p class="card-text controls">
+                        <a (click)="getStud(entry._id, 'edit')"><i class="fa fa-pencil" aria-hidden="true"></i>&nbsp;Edit</a>
+                        &nbsp;&nbsp;
+                        <a (click)="getStud(entry._id, 'view')"><i class="fa fa-eye" aria-hidden="true"></i>&nbsp;View</a>
+                    </p>
+                </div>                 
+            </div>
+            <br>
+    </div>
+</div>
